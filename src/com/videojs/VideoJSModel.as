@@ -577,6 +577,10 @@ package com.videojs{
             }
         }
 
+        public function getPrivider():IProvider {
+            return _provider;
+        }
+
         private function initProvider():void {
             if(_provider){
                 _provider.die();

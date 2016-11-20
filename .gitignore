@@ -11,3 +11,5 @@ build
 
 sandbox/*
 !sandbox/*.example
+
+.idea/

@@ -132,6 +132,11 @@ package com.videojs.providers{
             }
         }
 
+//        获取bufferLength
+    public function getBubfferLength():Number{
+        return _ns.bufferLength;
+    }
+
         public function appendBuffer(bytes:ByteArray):void{
             throw "RTMPVideoProvider does not support appendBuffer";
         }

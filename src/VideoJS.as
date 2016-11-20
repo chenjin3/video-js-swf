@@ -83,6 +83,9 @@ package{
                 ExternalInterface.addCallback("vjs_pause", onPauseCalled);
                 ExternalInterface.addCallback("vjs_resume", onResumeCalled);
                 ExternalInterface.addCallback("vjs_stop", onStopCalled);
+
+//                vjs_getBufferLength from js
+                ExternalInterface.addCallback("vjs_getBufferLength", onGetBufferLengthCalled);
             }
             catch(e:SecurityError){
                 if (loaderInfo.parameters.debug != undefined && loaderInfo.parameters.debug == "true") {
@@ -403,6 +406,10 @@ package{
 
         private function onStopCalled():void{
             _app.model.stop();
+        }
+
+        private function onGetBufferLengthCalled():Number{
+            return _app.model.getPrivider().getBubfferLength();
         }
 
         private function onUncaughtError(e:Event):void{
