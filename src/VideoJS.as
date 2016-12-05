@@ -84,8 +84,12 @@ package{
                 ExternalInterface.addCallback("vjs_resume", onResumeCalled);
                 ExternalInterface.addCallback("vjs_stop", onStopCalled);
 
-//                vjs_getBufferLength from js
+//                向 js暴露接口
                 ExternalInterface.addCallback("vjs_getBufferLength", onGetBufferLengthCalled);
+                ExternalInterface.addCallback("vjs_getBufferTimeMax", onGetBufferTimeMaxCalled);
+                ExternalInterface.addCallback("vjs_getBufferTime", onGetBufferTimeCalled);
+                ExternalInterface.addCallback('vjs_setBufferTimeMax', onSetBufferTimeMaxCalled);
+                ExternalInterface.addCallback('vjs_getMetaData', onGetMetaDataCalled);
             }
             catch(e:SecurityError){
                 if (loaderInfo.parameters.debug != undefined && loaderInfo.parameters.debug == "true") {
@@ -408,9 +412,25 @@ package{
             _app.model.stop();
         }
 
+        /*向js暴露接口的对应AS函数*/
         private function onGetBufferLengthCalled():Number{
-            return _app.model.getPrivider().getBubfferLength();
+            return _app.model.getProvider().getBubfferLength();
         }
+        private function onGetBufferTimeMaxCalled():Number {
+            return _app.model.getProvider().getBubfferTimeMax();
+        }
+        private function onGetBufferTimeCalled():Number {
+            return _app.model.getProvider().getBubfferTime();
+        }
+
+        private function onSetBufferTimeMaxCalled(value:Number):void {
+            _app.model.getProvider().setBufferTimeMax(value);
+        }
+
+        private function onGetMetaDataCalled():Object {
+            return _app.model.getProvider().metadata;
+        }
+
 
         private function onUncaughtError(e:Event):void{
             e.preventDefault();

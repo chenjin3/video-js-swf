@@ -577,7 +577,7 @@ package com.videojs{
             }
         }
 
-        public function getPrivider():IProvider {
+        public function getProvider():IProvider {
             return _provider;
         }
 

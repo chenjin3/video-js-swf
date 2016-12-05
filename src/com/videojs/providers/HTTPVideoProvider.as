@@ -692,5 +692,23 @@ package com.videojs.providers{
         public function onPlayStatus(e:Object):void{
 
         }
+
+        //        获取bufferLength (当前缓冲时长)
+        public function getBubfferLength():Number{
+            return _ns.bufferLength;
+        }
+
+        //        获取bufferTimeMax (决定了延时)
+        public function getBubfferTimeMax():Number{
+            return _ns.bufferTimeMax;
+        }
+
+        public function setBufferTimeMax(value:Number):void {
+            _ns.bufferTimeMax = value;
+        }
+        //        获取bufferTime (首屏缓冲数据时长)
+        public function getBubfferTime():Number{
+            return _ns.bufferTime;
+        }
     }
 }
